@@ -1,0 +1,215 @@
+// variables:
+
+// colors
+$header-bg: #326ada;
+$nice-green: #7ddc1f;
+$light-blue: #0073e5;
+$cold-blue: #326ada;
+$dusty-white: #f5f5f5;
+$lovely-purple: #800080;
+
+$off-gray: #444444;
+$channel-off: #a19c9c;
+
+// screen sizes
+$small-mobile: 320px;
+$large-mobile: 480px;
+$tablet: 720px;
+$desktop: 1023px;
+
+//mixins
+@mixin colorbutton($bg-color, $text-color, $radius) {
+	background-color: $bg-color;
+	color: $text-color;
+	border: {
+		color: $bg-color;
+		width: 1px;
+		style: solid;
+	};
+	border-radius: $radius;
+}
+
+@mixin border($width, $bord-color, $radius:0) {
+	border: {
+		color: $bord-color;
+		width: $width;
+		style: solid;
+	};
+	border-radius: $radius;
+}
+
+@mixin borderwidth($top:1, $right:1, $bottom:1, $left:1) {
+	border-top-width: $top;
+	border-right-width: $right;
+	border-bottom-width: $bottom;
+	border-left-width: $left;
+}   
+
+
+// main css
+body {
+	font-family: Helvetica, sans-serif;
+}
+
+.header {
+	width: 400px; //40%;
+	background-color: $header-bg;
+	margin: 0.1em auto;
+	padding: 0.5em;
+	
+	@media screen and (min-width: $small-mobile) and (max-width: $large-mobile - 1) {
+		width: 90%;
+		max-width: 400px;
+	}	
+
+}
+
+.main-heading {
+	text-align: center;
+	font-size: 2em;
+}
+
+.header h2 {
+	@extend .main-heading;
+	font-size: 1.8em;
+	text-transform: uppercase;
+	margin-bottom: 1em;
+	color: $dusty-white;
+}
+
+.buttons {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	button {
+		width: 30%;
+ 		margin-right: 2%;
+ 		font-size: 1.3em;
+ 		padding:0.2em 0;
+		
+		@media screen and (min-width: $small-mobile) and (max-width: $large-mobile - 1) {
+			font-size: 1.1em;
+		}	
+
+ 		&:hover {
+ 			filter: brightness(70%);
+ 		}	
+	}	
+}
+
+
+button#online {
+	@include colorbutton($nice-green, #000, 5px);
+}
+
+button#offline {
+	@include colorbutton($off-gray, #fff, 5px);
+}
+
+button#all {
+	@include colorbutton($lovely-purple, #fff, 5px);
+}
+
+.list-channels {
+	@extend .header;
+	background-color: lighten($header-bg, 20%);
+}
+
+#search-chan {
+	display: block;
+	width: 50%;
+	font-size: 1.2em;
+	padding: 0.5em 0.8em;
+	margin: 1em auto;
+	border-radius: 25px;
+
+	@media screen and (min-width: $small-mobile) and (max-width: $large-mobile - 1) {
+		width: 70%;
+		font-size: 1.1em;
+		padding: 0.3em 0.5em;
+	}
+}
+
+.channel {
+	@include border(1px, $dusty-white);
+	@include borderwidth(1px, 2px, 1px, 2px);
+	padding: 0.5em;
+	// background-color: $nice-green;
+	 
+	img {
+		float: left;
+		width: 55px;
+		@include border(1px, $off-gray, 100%);
+		margin: 10px;
+	}
+
+	h3 {
+		margin: 0.5em 0 0.5em 0;
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+
+	a {
+		text-decoration: none;
+		color: #000;
+		&:visited {
+			color: #000;
+		}
+	}
+
+	&:nth-child(0n+2) {
+		@include borderwidth(2px, 2px, 1px, 2px);
+	}
+
+	&:last-child {
+		@include borderwidth(1px, 2px, 2px, 2px);	
+	}
+}
+
+.status {
+	padding: 0 0.5em;
+	margin: 10px 0;
+	clear: left;
+	font-size: 1em;
+	color: $dusty-white;
+	font-style: italic;
+}
+
+.offline {
+	//background-color: fade-out(grayscale($header-bg), .25);
+	p.aside {
+		color: $off-gray;
+	}
+}
+
+.nonexistent {
+	background-color: $channel-off;
+	color: $dusty-white;
+	h3 {
+		padding-left: 0.5em;
+	}
+}
+
+.aside {
+	font-size: 1em;
+	font-weight: bold;
+	color: $nice-green;
+	padding-left: 1em;
+	margin: 10px 0;
+}
+
+footer {
+	@extend .header;
+	background-color: darken($header-bg, 20%); 
+}
+
+footer p {
+	text-align: center;
+	margin: 0.5em;
+	color: $dusty-white;
+}
+
+footer p a {
+	text-decoration: none;
+	color: $dusty-white;
+}
