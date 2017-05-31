@@ -3,8 +3,6 @@
 // colors
 $header-bg: #326ada;
 $nice-green: #7ddc1f;
-$light-blue: #0073e5;
-$cold-blue: #326ada;
 $dusty-white: #f5f5f5;
 $lovely-purple: #800080;
 
@@ -49,6 +47,7 @@ $desktop: 1023px;
 // main css
 body {
 	font-family: Helvetica, sans-serif;
+	background-color: lighten($header-bg, 40%);
 }
 
 .header {

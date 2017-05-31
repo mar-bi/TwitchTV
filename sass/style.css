@@ -1,5 +1,6 @@
 body {
-  font-family: Helvetica, sans-serif; }
+  font-family: Helvetica, sans-serif;
+  background-color: #dfe8f9; }
 
 .header, .list-channels, footer {
   width: 400px;
